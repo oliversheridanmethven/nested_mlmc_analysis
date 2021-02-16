@@ -1,0 +1,66 @@
+\documentclass[twocolumn,10pt]{extarticle}
+\usepackage[top=20mm,bottom=20mm,right=20mm,left=20mm]{geometry}
+\usepackage[numbers]{natbib}
+\bibliographystyle{unsrtnat}
+
+\title{Cover letter and significance statement}
+
+\author{Oliver Sheridan-Methven}
+
+\begin{document}
+\maketitle
+
+
+\section{The submission's details}
+
+\subsection{Title and authors}
+The submission is entitled ``\textit{Analysis of nested multilevel Monte Carlo using approximate Normal random variables}'', by Michael Giles and Oliver Sheridan-Methven.
+
+\subsection{Brief summary of contents}
+The contents are approximately 20 pages of numerical analysis (including figures and experimental results), detailing how approximate random variables can be incorporated into a multilevel Monte Carlo framework for approximating the solutions to stochastic differential equations.  
+
+\subsection{Originality of the work}
+The analysis originates from the research conducted by the authors as part of the PhD thesis by Oliver Sheridan-Methven at Oxford University \citep{sheridan-methven2020thesis}. Consequently, the analysis is contained therein. Similarly, a draft of this article has been made available on arXiv (under the same title) \citep{sheridanmethven2021analysis}. Aside from this, the work is original, and not published in part anywhere else. 
+
+\section{Overview of the work}
+
+The work begins with a review of producing Normal random variables using the inverse transform method, which requires the expensive evaluation of the inverse cumulative distribution function of the Normal distribution. We briefly review alternatives to exactly evaluating this function, and introduce \textit{approximate random variables} produced from using various types of approximations. The analysis and implementation details are in a separate companion piece \citep{sheridanmethven2020approximating}. These approximate random variables have approximately the same distribution to a high degree of fidelity, but are considerably faster to produce, offering substantial speed benefits. 
+
+Focusing on approximating the solutions to stochastic differential equations, the work then centres on a careful analysis of numerical schemes utilising these approximate random variables. First, we use approximate random variables in a modified Euler-Maruyama scheme, giving a detailed error analysis for the resulting path approximations resulting from the approximate random variables. These cheap path simulations are then incorporated into a multilevel Monte Carlo framework, allowing the approximation's speed to be exploited without compromising accuracy. The resulting nested multilevel Monte Carlo framework produced is then analysed, with comprehensive error bounds produced for the variance of the multilevel correction term which arises. 
+
+The work then concludes with supporting numerical results to demonstrate the predicted decay rate anticipated of the error, vindicating our analysis. Furthermore, we review the standard multilevel Monte Carlo savings calculations, and show that a simple implementation offers potential speed improvements by a factor of 5 or more without losing accuracy. 
+
+\section{Significance of the work}
+
+The core significance of this work centres on the numerical analysis contained within section 4 of the article. (The development of approximate random variables, while also significant, is ultimately the focus of another companion paper \citep{sheridanmethven2020approximating}).
+
+This analysis centres on two facets of the numerical approximation to solutions of stochastic differential equations, namely using approximate random variables in the Euler-Maruyama scheme, and then using these paths in a nested multilevel framework. 
+
+\subsection{The Euler-Maruyama scheme}
+
+The first contribution of the analysis is modifying the Euler-Maruyama scheme to use approximate random variables. Similar adaptation and analysis has been done with Rademacher random variables (known as the weak Euler-Maruyama scheme), random variables formed using moment matching schemes by \citet*{mss15}, and random variables using truncated bit schemes by \citet*{ghmr19}. Our framework though, using a generalised notion of approximate random variables, subsumes and unifies these three approaches. 
+
+Using this framework, we are able to provide a generalised bound for the strong error measured in the $ L^p $-norm for the resulting path simulations in terms of the error from approximating the underlying random variables. Crucially, our analysis extends and surpasses several previous analyses in two ways. 
+
+The first is that the error is bounded in the $ L^p $ norm for $ p \geq 2 $, whereas several previous bounds were restricted to $ p = 2 $, and this extension we later show is \emph{crucial} for the nested multilevel Monte Carlo analysis. 
+
+The second is that our analysis bounds the strong error, rather than the weak error, where the former is the crucial quantity in multilevel Monte Carlo analyses. 
+
+While both of these contributions are interesting and important in and of themselves, they also lay the bedrock for the nested multilevel Monte Carlo to come.
+
+\subsection{Nested multilevel Monte Carlo}
+
+The second and even more significant contribution of the work is its nested multilevel Monte Carlo analysis. 
+
+With a knowledge of multilevel Monte Carlo, we show how the cheaper path simulations using the approximate random variables can be incorporated into more regular multilevel Monte Carlo settings. The key feat of analysis bounds the variance of the new four-way difference multilevel Monte Carlo correction term which arises. There are several interesting, novel, and significant consequences which uniquely arise from using the approximate random variables. 
+
+Firstly, as the approximate random variables do not exactly follow a Normal distribution, the coarse and fine path increments follow different statistical distributions. This excludes our framework from a multi-index Monte Carlo setting \citep{hnt16}, which would have otherwise seemed the natural framing our of setup. 
+
+Secondly, the approximation errors from the random variables and the discretisation errors couple. This results in a drastic variance reduction and completely novel variance structure. Consequently, it is this coupling which necessitates the stronger bounds ($ p > 2 $) on the $ L^p $ error.
+
+Lastly, we find this coupled variance structure largely carries over to Lipschitz and differentiable functionals. However, for Lipschitz and non-differentiable functionals (especially common in mathematical finance), we find a more involved analysis is required, giving rise to a transitional behaviour in the variance structure. This is both a surprising result, but importantly is readily seen in our numerical results. Our analysis provides a novel prediction and explanation of this effect. 
+
+Overall we present a generalised approach for producing and incorporating low-cost random variables into numerical simulations, alongside the detailed nested multilevel Monte Carlo framework proposed. All facets of this are comprehensively analysed, and the results are a source of academic interest, avenues for further research, and of considerable practical significance for high performance scientific computing. 
+
+\bibliography{mlmc}
+\end{document}
