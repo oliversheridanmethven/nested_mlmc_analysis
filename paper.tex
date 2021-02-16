@@ -1,15 +1,15 @@
-\documentclass[11pt]{article}
+\documentclass[review]{siamart190516}
 
-\usepackage{amsmath,amsthm,amssymb,amscd}
+\usepackage{amsmath,amssymb,amscd}
 
 \usepackage{float}
 \usepackage[caption = false]{subfig}
-\usepackage[final]{graphicx}
+\usepackage[]{graphicx}
 
 \usepackage{xcolor}
 %\usepackage{natbib}
 \usepackage{todonotes}
-\usepackage[colorlinks,citecolor = red,urlcolor=blue]{hyperref}
+%\usepackage[colorlinks,citecolor = red,urlcolor=blue]{hyperref}
 
 \def \RR {{\mathbb{R}}}
 \def \EE {{\mathbb{E}}}
@@ -62,10 +62,10 @@
 
 \newcommand{\fracs}[2]{{\textstyle \frac{#1}{#2}}}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{assumption}[theorem]{Assumption}
 %\newenvironment{proof}{
 % \bgroup\noindent\small{\bf Proof\ }}{
@@ -96,16 +96,25 @@ Oliver Sheridan-Methven
 \maketitle
 
 \begin{abstract}
-  The multilevel Monte Carlo (MLMC) method has been used for a wide variety
-  of stochastic applications.  In this paper we consider its use in situations
-  in which input random variables can be replaced by similar approximate random
-  variables which can be computed much more cheaply.  A nested MLMC approach is
-  adopted in which a two-level treatment of the approximated random variables
-  is embedded within a standard MLMC application. We analyse the resulting
-  nested MLMC variance in the specific context of an SDE discretisation in
-  which Normal random variables can be replaced by approximately Normal
-  random variables, and provide numerical results to support the analysis.
+The multilevel Monte Carlo (MLMC) method has been used for a wide variety
+of stochastic applications.  In this paper we consider its use in situations
+in which input random variables can be replaced by similar approximate random
+variables which can be computed much more cheaply.  A nested MLMC approach is
+adopted in which a two-level treatment of the approximated random variables
+is embedded within a standard MLMC application. We analyse the resulting
+nested MLMC variance in the specific context of an SDE discretisation in
+which Normal random variables can be replaced by approximately Normal
+random variables, and provide numerical results to support the analysis.
 \end{abstract}
+
+\begin{keywords}
+approximations, random variables, the Normal distribution, multilevel Monte Carlo, the Euler-Maruyama scheme, the Milstein scheme, and high performance computing.
+\end{keywords}
+
+% cf. https://mathscinet.ams.org/mathscinet/msc/msc2020.html
+\begin{AMS}
+65C10, 65C05, 65Y20, 60H35, and 65C30.
+\end{AMS}
 
 
 \section{Introduction}
@@ -1689,7 +1698,7 @@ Mathematical Modelling (EP/L015803/1) in collaboration with Arm Ltd.
 
 %\newpage
 
-\bibliographystyle{unsrt}
+\bibliographystyle{siamplain}
 \bibliography{mlmc,mc}
 
 \appendix
