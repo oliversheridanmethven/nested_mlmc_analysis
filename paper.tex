@@ -205,9 +205,8 @@ so that it is possible to generate coupled pairs $(Z,\tZ)$
 from the same random input $U$.
 
 The three approximations are all motivated by the different hardware features 
-of modern CPUs and GPUs (manycore graphics processing units). The 
-implementation details and the resulting execution performance of 
-the three approximations are explained more fully in \cite{sheridanmethven2020approximating,sheridan-methven2020thesis}.
+of modern CPUs and GPUs (manycore graphics processing units). Their analysis, 
+implementation details, and resulting execution performance are explained more fully in \cite{sheridanmethven2020approximating,sheridan-methven2020thesis}.
 
 Note that we are not concerned with the computational cost of generating the 
 uniform random numbers $U$.  This is because we can follow 
@@ -224,9 +223,9 @@ computation \cite{ecuyer2016randomized}.
 
 \begin{figure}
 \begin{center}
-\subfloat[Quantised approximation]{\includegraphics[width = 4.5in]{figs/fig1a}} \\
-\subfloat[Piecewise linear approximation on dyadic intervals]{\includegraphics[width = 4.5in]{figs/fig1b}} \\
-\subfloat[Polynomial approximation]{\includegraphics[width = 4.5in]{figs/fig1c}}
+\subfloat[Quantised approximation]{\includegraphics[width = 4.5in]{fig1a}} \\
+\subfloat[Piecewise linear approximation on dyadic intervals]{\includegraphics[width = 4.5in]{fig1b}} \\
+\subfloat[Polynomial approximation]{\includegraphics[width = 4.5in]{fig1c}}
 \end{center}
 \caption{Three approximations of the inverse Normal CDF.}
 \label{fig:fig1}
@@ -1583,7 +1582,7 @@ $1.5\!\times\!10^{-4}$, $4\!\times\!10^{-5}$ and $2.6\!\times\!10^{-3}$, respect
 \begin{figure}[tb]
 \centering
 %\includegraphics[width=\linewidth]{figs/numeric_results_different_approximations}
-\includegraphics[width=0.7\linewidth]{figs/fig2}
+\includegraphics[width=0.7\linewidth]{fig2}
 \caption{MLMC variances for two different output functions, with
   reference lines proportional to $2^{-2\ell}$ and $2^{-\ell}$.}
 \label{fig:numeric_results}
